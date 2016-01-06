@@ -1,0 +1,23 @@
+
+Official Ruby docs - has tons of links to other resources....
+http://www.ruby-lang.org/en/documentation/
+
+Poignant Guide to Ruby
+http://mislav.uniqpath.com/poignant-guide/
+
+Ruby Essentials
+http://www.techotopia.com/index.php/Ruby_Essentials
+
+Ruby's User Guide
+http://www.rubyist.net/~slagell/ruby/
+
+Ruby dynamically and strongly typed
+http://www.rubyfleebie.com/ruby-is-dynamically-and-strongly-typed/
+
+Ruby multi-line comments
+http://stackoverflow.com/questions/2989762/how-can-i-comment-multiple-lines-in-ruby
+
+Ruby == === eql? equal?
+http://stackoverflow.com/questions/7156955/whats-the-difference-between-equal-eql-and
+
+

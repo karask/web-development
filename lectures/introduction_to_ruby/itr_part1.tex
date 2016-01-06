@@ -1,0 +1,1338 @@
+
+
+
+\section{Overview} 
+\begin{frame}\frametitle{Overview} 
+\begin{itemize}
+\item History
+\item Philosophy
+\item Language Characteristics
+\item Code Example
+\item REPL or Language Shell
+\item Basic code conventions
+\item Ruby installation and RubyGems
+\end{itemize}
+\end{frame}
+
+
+\subsection{History}
+\begin{frame}\frametitle{History}
+
+\begin{itemize}
+
+\item<1-> Yukihiro Matsumoto
+\begin{itemize}
+\item \textit{Matz}
+\end{itemize}
+
+\item<2-> Development started in 1993
+
+\item<3-> Public in 1995
+\begin{itemize}
+\item version 0.95
+\end{itemize}
+
+\item<4-> Worldwide use 1999
+\begin{itemize}
+\item version 1.3
+\end{itemize}
+
+\item<5-> Popularised after 2004
+\begin{itemize}
+\item version 1.8 (1.8.7)
+\item ...particularly by Ruby on Rails
+\end{itemize}
+
+\item<6-> Currently
+\begin{itemize}
+\item version 2.1
+\item ...backward compatible with 1.9 (1.9.3)
+\end{itemize}
+
+\item<7-> Huge ecosystem and community
+\begin{itemize}
+\item ...especially in web development
+\end{itemize}
+
+\end{itemize} 
+
+\end{frame}
+
+
+
+
+\subsection{Philosophy}
+\begin{frame}\frametitle{Philosophy}
+
+
+\begin{quote}
+Often people, especially computer engineers, focus on the machines. They think, ``By doing this, the machine will run faster. By doing this, the machine will run more effectively. By doing this, the machine will something something something.'' They are focusing on machines. But in fact we need to focus on humans, on how humans care about doing programming or operating the application of the machines. We are the masters. They are the slaves.
+\end{quote}\par\raggedleft--- \textup{Yukihiro Matsumoto}   \pause
+
+\begin{itemize}
+
+\item Goals 
+\begin{itemize}
+\item productivity
+\item simplicity
+\item fun to use
+\end{itemize}
+
+\pause
+
+\item Motto
+\begin{itemize}
+\item to make programmers happy!
+\end{itemize}
+
+\end{itemize} 
+
+\end{frame}
+
+
+
+
+\subsection{Main Characteristics}
+\begin{frame}\frametitle{Main Characteristics}
+
+\begin{itemize}
+
+\item<1-> General purpose language
+
+\item<2-> Interpreted
+
+\item<3-> Dynamically and Strongly typed
+
+\item<4-> Multi-paradigm
+\begin{itemize}
+\item Imperative / Procedural
+\item Object-Oriented
+\item Functional
+\end{itemize}
+
+\item<5-> Open Source
+\begin{itemize}
+\item MRI or CRuby, JRuby, Rubinius, MacRuby, IronRuby, ...
+\item RubySpec
+\end{itemize}
+
+\item<6-> Other features
+\begin{itemize}
+\item Mixins, closures, metaprogramming, garbage collection, package management (gem), ...
+\end{itemize}
+
+\item<7-> Very Expressive
+\begin{itemize}
+\item \textit{With great power, comes great responsibility...}
+\end{itemize}
+
+
+\end{itemize}
+
+\end{frame}
+
+
+\subsection{Code Example}
+\begin{frame}[fragile]\frametitle{Code Example}
+
+\lstinputlisting[language=ruby]{code/code_example.rb}
+\pause
+\begin{lstlisting}[language=bash,numbers=none]
+$ ruby code_example.rb
+A week has 7 days
+\end{lstlisting}
+
+\end{frame}
+
+
+\subsection{REPL or Language Shell}
+\begin{frame}[fragile]\frametitle{REPL or Language Shell}
+
+\begin{itemize}
+
+\item Read-eval-print loop
+\begin{itemize}
+\item interactive computer programming environment
+\item helps learning
+\end{itemize}
+
+\end{itemize}
+\pause
+
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ irb
+irb(main):001:0> x = "7"
+=> "7"                  ^\pause^
+irb(main):002:0> y = "A week has " + x + " days."
+=> "A week has 7 days." ^\pause^
+irb(main):003:0> x = 7
+=> 7                    ^\pause^
+irb(main):004:0> y = "A week has " + x + " days."
+TypeError: can't convert Fixnum into String
+	from (irb):4:in `+'
+	from (irb):4
+	from :0
+irb(main):005:0> 
+\end{lstlisting}
+
+
+\end{frame}
+
+
+
+
+
+\subsection{Basic coding conventions}
+\begin{frame}\frametitle{Basic coding conventions}
+
+\begin{itemize}
+
+\item<1-> indentation of 2 spaces
+\begin{itemize}
+\item ...and no tabs
+\end{itemize}
+
+\item<2-> snake\_case
+\begin{itemize}
+\item ...but classes and modules use PascalCase
+\end{itemize}
+
+\item<3-> semicolon is optional
+\begin{itemize}
+\item ...but is needed to separate two commands in the same line
+\end{itemize}
+
+\item<4-> space between operators in assignments
+\begin{itemize}
+\item ...but not in method arguments default values
+\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\subsection{Ruby installation and RubyGems}
+\begin{frame}[fragile]\frametitle{Ruby installation and RubyGems (Ubuntu 12.04)}
+
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ sudo apt-get install ruby
+$ sudo apt-get install rubygems
+\end{lstlisting}
+\pause
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ sudo apt-get install ruby1.9.1
+\end{lstlisting}
+\pause
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ ruby -v
+\end{lstlisting}
+\pause
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ sudo gem install rest-client
+\end{lstlisting}
+\pause
+\begin{itemize}
+  \item built-in from 1.9
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\subsection{Ruby installation with RVM}
+\begin{frame}[fragile]\frametitle{Ruby installation with Ruby Version Manager}
+
+\begin{itemize}
+  \item RVM: multiple Rubies and gem sets
+  \item Installation: \href{http://rvm.io}{http://rvm.io}
+\end{itemize}
+\pause
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ \curl -sSL https://get.rvm.io | bash -s stable
+\end{lstlisting}
+\pause
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ rvm requirements
+$ rvm notes
+$ rvm install 1.9.3
+$ rvm install jruby
+$ rvm use 1.9.3
+$ ruby -v
+\end{lstlisting}
+\pause
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ rvm --rvmrc --create 1.9.3@myproject
+$ gem install sinatra
+$ rvm use system
+\end{lstlisting}
+
+\end{frame}
+
+
+
+
+\section{Types} 
+\begin{frame}\frametitle{Types} 
+\begin{itemize}
+\item Numbers
+\item Strings
+\item Symbols
+\end{itemize}
+\end{frame}
+
+
+
+
+\subsection{Numbers}
+\begin{frame}[fragile]\frametitle{Numbers}
+
+\begin{columns}[c] 
+
+\begin{column}{7cm}
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ irb
+irb(main):001:0> 3 + 4
+=> 7      ^\pause^
+irb(main):002:0> 30 / 2
+=> 15     ^\pause^
+irb(main):003:0> 7 / 2
+=> 3      ^\pause^
+irb(main):004:0> 7 % 2
+=> 1      ^\pause^
+irb(main):005:0> 7.0 / 2
+=> 3.5    ^\pause^
+irb(main):006:0> 7.class
+=> Fixnum ^\pause^
+irb(main):007:0> 7.0.class
+=> Float  ^\pause^
+irb(main):008:0> 7.methods
+=> ["%", "odd?", "inspect", ... ]
+\end{lstlisting}
+\end{column}
+
+\pause
+\begin{column}{4cm}
+\begin{itemize}
+
+\item Fixnum
+\begin{itemize}
+\item \texttt{.succ}
+\item \texttt{.pred}
+\item \texttt{.upto}
+\item \texttt{.to\_f}
+\end{itemize}
+
+\item Float
+\begin{itemize}
+\item \texttt{.round}
+\item \texttt{.truncate}
+\item \texttt{.to\_i}
+\end{itemize}
+
+\item Operators
+\begin{itemize}
+\item \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/}, \texttt{\%}, \texttt{**} 
+\end{itemize}
+
+\item Assignment Ops.
+\begin{itemize}
+\item \texttt{=}, \texttt{+=}, \texttt{-=}, \texttt{*=}, \texttt{/=}, \texttt{**=} 
+\end{itemize}
+
+
+\end{itemize}
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+
+
+
+
+\subsection{Strings}
+\begin{frame}[fragile]\frametitle{Strings}
+
+\begin{columns}[c] 
+
+\begin{column}{7.5cm}
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ irb
+irb(main):001:0> "Ruby"
+=> "Ruby"   ^\pause^
+irb(main):002:0> 'Ruby'.reverse
+=> "ybuR"   ^\pause^
+irb(main):003:0> "RuBy".downcase
+=> "ruby"   ^\pause^
+irb(main):004:0> %{Ruby string}
+=> "Ruby string"   ^\pause^
+irb(main):005:0> "Ruby" << " string"
+=> "Ruby string"   ^\pause^
+irb(main):006:0> "Ruby" + " string"
+=> "Ruby string"   ^\pause^
+irb(main):007:0> n = "Ruby".size
+=> 4               ^\pause^
+irb(main):008:0> %{"Ruby" size is #{n}}
+=> "\"Ruby\" size is 4"
+\end{lstlisting}
+\end{column}
+
+\pause
+
+\begin{column}{4cm}
+\begin{itemize}
+
+\item String
+\begin{itemize}
+\item \texttt{.chomp}
+\item \texttt{<=>}
+\item \texttt{=\~}
+\item \texttt{.empty?}
+\item \texttt{.include?}
+\item \texttt{.index}
+\item \texttt{.insert}
+\item \texttt{.gsub}
+\item \texttt{.length}
+\item \texttt{.split}
+\item \texttt{.to\_i}
+\item \texttt{.to\_f}
+\end{itemize}
+
+\end{itemize}
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+
+
+
+\subsection{Symbols}
+\begin{frame}[fragile]\frametitle{Symbols}
+
+\begin{columns}[c] 
+
+\begin{column}{7.5cm}
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ irb
+irb(main):001:0> str1 = "test"
+=> "test"      ^\pause^
+irb(main):002:0> str2 = "test"
+=> "test"      ^\pause^
+irb(main):003:0> str1 == str2
+=> true        ^\pause^
+irb(main):004:0> str1.equal? str2
+=> false       ^\pause^
+irb(main):005:0> sym1 = :test
+=> :test       ^\pause^
+irb(main):006:0> sym2 = :test
+=> :test       ^\pause^
+irb(main):007:0> sym1.equal? sym2
+=> true        ^\pause^
+irb(main):008:0> sym1.object_id
+=> 333628
+irb(main):009:0> sym2.object_id
+=> 333628
+\end{lstlisting}
+\end{column}
+
+\pause
+
+\begin{column}{4cm}
+\begin{itemize}
+
+\item Symbol
+\begin{itemize}
+\item is immutable
+\item \texttt{.to\_s}
+\item \texttt{.to\_i}
+\end{itemize}
+
+\item Object
+\begin{itemize}
+\item \texttt{.object\_id}
+\end{itemize}
+
+
+\end{itemize}
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+
+
+
+\section{Collections} 
+\begin{frame}\frametitle{Collections} 
+\begin{itemize}
+\item Arrays
+\item Ranges
+\item Hashes
+\end{itemize}
+\end{frame}
+
+
+
+
+\subsection{Arrays}
+\begin{frame}[fragile]\frametitle{Arrays}
+
+\begin{columns}[c] 
+
+\begin{column}{8cm}
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ irb
+irb(main):001:0> a = [ 1, 2, 3, 4 ]
+=> [1, 2, 3, 4]                    ^\pause^
+irb(main):002:0> a = Array[1, 2, 3]
+=> [1, 2, 3]                       ^\pause^
+irb(main):003:0> a = Array.new(5)
+=> [nil, nil, nil, nil, nil]       ^\pause^
+irb(main):004:0> [1, 2, 4] == [1, 2, 3]
+=> false                           ^\pause^
+irb(main):005:0> [1, 2, 4] <=> [1, 2, 3]
+=> 1                               ^\pause^
+irb(main):006:0> a = [ 'a', 'b', 'c' ]
+=> ["a", "b", "c"]                 ^\pause^
+irb(main):007:0> a[1]
+=> "b"                             ^\pause^
+irb(main):008:0> a.last
+=> "c"
+irb(main):009:0> 
+\end{lstlisting}
+\end{column}
+
+\pause
+
+\begin{column}{3.5cm}
+\begin{itemize}
+
+\item Array
+\begin{itemize}
+\item \texttt{[-1]}
+\item \texttt{.first}
+\item \texttt{.at}
+\item \texttt{.clear}
+\item \texttt{.concat}
+\item \texttt{.delete}
+\item \texttt{.empty?}
+\item \texttt{.fill}
+\item \texttt{.flatten}
+\item \texttt{.include?}
+\end{itemize}
+
+\end{itemize}
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}[fragile]\frametitle{Arrays, cont.}
+
+\begin{columns}[c] 
+
+\begin{column}{7cm}
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ irb
+irb(main):001:0> a = [1, 2, 3]
+=> [1, 2, 3]                        ^\pause^
+irb(main):002:0> a[2] = 4
+=> 4                                ^\pause^
+irb(main):003:0> a
+=> [1, 2, 4]                        ^\pause^
+irb(main):004:0> a[4] = 3
+=> 3                                ^\pause^
+irb(main):005:0> a
+=> [1, 2, 4, nil, 3]                ^\pause^
+irb(main):006:0> a.compact.sort
+=> [1, 2, 3, 4]                     ^\pause^
+irb(main):007:0> a << 5
+=> [1, 2, 3, 4, 5]                  ^\pause^
+irb(main):007:0> a << "foo"
+=> [1, 2, 4, nil, 3, "foo"]           
+\end{lstlisting}
+\end{column}
+
+\pause
+
+\begin{column}{4cm}
+\begin{itemize}
+
+\item Array
+\begin{itemize}
+
+\item \texttt{.max}
+\item \texttt{.min}
+\item \texttt{.reverse}
+
+\item \texttt{.each}
+\item \texttt{.map}
+\item \texttt{.reject}
+
+\end{itemize}
+
+\end{itemize}
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}[fragile]\frametitle{as stacks and as queues}
+
+\begin{columns}[c] 
+
+\begin{column}{7cm}
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ irb
+irb(main):001:0> a = [1, 2, 3, 4]
+=> [1, 2, 3, 4]                       ^\pause^
+irb(main):002:0> a.push 5
+=> [1, 2, 3, 4, 5]                    ^\pause^
+irb(main):003:0> a.pop
+=> 5
+irb(main):004:0> a
+=> [1, 2, 3, 4]                       ^\pause^
+irb(main):005:0> a.shift
+=> 1                                  
+irb(main):006:0> a
+=> [2, 3, 4]                          ^\pause^
+irb(main):007:0> a.unshift 1
+=> [1, 2, 3, 4]
+\end{lstlisting}
+\end{column}
+
+\pause
+
+\begin{column}{4cm}
+\begin{itemize}
+
+\item Array
+\begin{itemize}
+
+\item \texttt{stack (LIFO)}
+\begin{itemize}
+\item \texttt{push, pop}
+\item \texttt{unshift, shift}
+\end{itemize}
+
+\item \texttt{queue (FIFO)}
+\begin{itemize}
+\item \texttt{push, shift}
+\item \texttt{unshift, pop}
+\end{itemize}
+
+\end{itemize}
+
+\end{itemize}
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]\frametitle{as sets}
+
+\begin{columns}[c] 
+
+\begin{column}{7cm}
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ irb
+irb(main):001:0> a = [ 0, 1, 3 ]
+=> [0, 1, 3]                           ^\pause^
+irb(main):002:0> b = [ 0, 2, 4 ]
+=> [0, 2, 4]                           ^\pause^
+irb(main):003:0> a + b
+=> [0, 1, 3, 0, 2, 4]                  ^\pause^
+irb(main):004:0> a & b
+=> [0]                                 ^\pause^
+irb(main):005:0> a | b
+=> [0, 1, 3, 2, 4]                     ^\pause^
+irb(main):006:0> a - b
+=> [1, 3]                              ^\pause^
+irb(main):007:0> (a + b).sort
+=> [0, 0, 1, 2, 3, 4]
+\end{lstlisting}
+\end{column}
+
+\pause
+
+\begin{column}{4cm}
+\begin{itemize}
+
+\item Array
+\begin{itemize}
+\item \texttt{append}
+\item \texttt{intersection}
+\item \texttt{union / add}
+\item \texttt{complement / subtract}
+\end{itemize}
+
+\end{itemize}
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+
+
+
+
+
+
+\subsection{Ranges}
+\begin{frame}[fragile]\frametitle{Ranges}
+
+\begin{columns}[c] 
+
+\begin{column}{7.5cm}
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ irb
+irb(main):001:0> (1..3)
+=> 1..3                            ^\pause^
+irb(main):002:0> (1..3).class
+=> Range                           ^\pause^
+irb(main):003:0> (1..3).to_a
+=> [1, 2, 3]                       ^\pause^
+irb(main):004:0> (1...3).to_a
+=> [1, 2]                          ^\pause^
+irb(main):005:0> ('ab'..'ad').to_a
+=> ["ab", "ac", "ad"]
+\end{lstlisting}
+\end{column}
+
+\pause
+
+\begin{column}{4cm}
+\begin{itemize}
+
+\item Range
+\begin{itemize}
+\item \texttt{.max}
+\item \texttt{.min}
+\item \texttt{.each}
+\item \texttt{.map}
+\item \texttt{.reject}
+\end{itemize}
+
+\end{itemize}
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+
+
+
+\subsection{Hashes}
+\begin{frame}[fragile]\frametitle{Hashes}
+
+\begin{columns}[c] 
+
+\begin{column}{8cm}
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ irb
+irb(main):001:0> h1 = { :key => 'value' }
+=> {:key=>"value"}            ^\pause^
+irb(main):002:0> h2 = { key: 'value' }
+=> {:key=>"value"}             ^\pause^
+irb(main):003:0> h1[h2] = "key is object!"
+=> "key is object!"         
+irb(main):004:0> h1
+=> {:key=>"value", {:key=>"value"}=>"key is object!"} ^\pause^
+irb(main):005:0> h1.delete(h2)
+=> "key is object!"
+irb(main):006:0> h1
+=> {"key"=>"value"}            ^\pause^
+irb(main):007:0> h1.size
+=> 1                           ^\pause^
+irb(main):008:0> h1.keys
+=> ["key"]                     ^\pause^
+irb(main):009:0> h1.values
+=> ["value"]
+\end{lstlisting}
+\end{column}
+
+\pause
+
+\begin{column}{3.5cm}
+\begin{itemize}
+
+\item Hash
+\begin{itemize}
+\item v. 1.8
+\item v. 1.9
+\item \texttt{.clear}
+\item \texttt{.length}
+\item \texttt{.empty?}
+\item \texttt{.key?}
+\item \texttt{.value?}
+\item \texttt{.index}
+\item \texttt{.store}
+\item \texttt{.to\_a}
+\item \texttt{.to\_s}
+\item \texttt{.sort}
+\end{itemize}
+
+\end{itemize}
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+
+
+
+
+
+\section{Structure} 
+\begin{frame}\frametitle{Structure} 
+\begin{itemize}
+\item Methods
+\item Blocks
+\item Procs and Lambdas
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\subsection{Methods}
+\begin{frame}[fragile]\frametitle{Methods}
+
+\lstinputlisting[language=ruby]{code/methods_intro.rb}
+\pause
+\begin{lstlisting}[language=bash]
+$ ruby power_method.rb 
+25
+3
+Result is 2 and modulo is: 1
+\end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}[fragile]\frametitle{Splat operator and variable parameters}
+
+\begin{lstlisting}[language=bash, escapechar={^}]
+$ irb
+1.9.3-p362 :001 > first, *center, last = [1, 2, 3, 4, 5]
+ => [1, 2, 3, 4, 5]  ^\pause^
+1.9.3-p362 :002 > first
+ => 1                ^\pause^
+1.9.3-p362 :002 > center
+ => [2, 3, 4] 
+\end{lstlisting}
+\pause
+
+\lstinputlisting[language=ruby]{code/methods_params.rb}
+\pause
+
+\begin{lstlisting}[language=bash]
+$ ruby methods_params.rb 
+Hi Kostas!
+Hi Alex!
+\end{lstlisting}
+
+\end{frame}
+
+
+
+
+
+\subsection{Blocks}
+\begin{frame}[fragile]\frametitle{Blocks}
+
+\begin{itemize}
+
+\item is simply a chunk of code between curly brackets \textbf{\{} and \textbf{\}} or the keywords \textbf{do} and \textbf{end}
+
+\item it can take parameters after the start of the block between vertical bars
+ 
+\item a block can be passed to a method as the last parameter 
+\end{itemize}
+
+\pause
+
+\begin{lstlisting}[language=ruby]
+[1, 2, 3].each { |n| print n, " " }
+
+# will output: 1 2 3
+\end{lstlisting}
+
+\pause
+
+\begin{lstlisting}[language=ruby]
+n = "foo"
+[1, 2, 3].each { |n| print n, " " }
+print n
+
+# v.1.9 - will output: 1 2 3 foo
+\end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}[fragile]\frametitle{Method that takes a block as a parameter}
+
+\begin{lstlisting}[language=ruby]
+def test
+   puts "You are in the method"
+   yield
+   puts "You are again back to the method"
+end
+
+test { puts "You are in the block" }
+\end{lstlisting}
+\pause
+
+\begin{lstlisting}[language=bash]
+$ ruby test.rb 
+You are in the method
+You are in the block
+You are again back to the method
+\end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}[fragile]\frametitle{Block / yield can also take parameters}
+
+\begin{lstlisting}[language=ruby]
+def test
+   yield 5
+   puts "You are in the method test"
+   yield 100
+end
+test { |i| puts "You are in the block with value #{i}" }
+\end{lstlisting}
+\pause
+
+\begin{lstlisting}[language=bash]
+$ ruby test.rb 
+You are in the block with value 5
+You are in the method test
+You are in the block with value 100
+\end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}[fragile]\frametitle{Explicitly binding a block to a method}
+
+
+\begin{lstlisting}[language=ruby]
+def test( &block )                                                                                                                                                                                                                            
+     puts "You are in the method"
+     block.call
+     puts "Back to the method and block is of class #{block.class}"
+end
+
+test { puts "You are in the block" }
+\end{lstlisting}
+\pause
+
+\begin{lstlisting}[language=bash]
+$ ruby test.rb 
+You are in the method
+You are in the block
+Back to the method and block is of class Proc
+\end{lstlisting}
+
+
+\end{frame}
+
+
+
+\subsection{Procs and Lambdas}
+\begin{frame}[fragile]\frametitle{Procs}
+
+\begin{itemize}
+
+\item a block is a \texttt{Proc}
+\item a \texttt{Proc} is bound to a variable explicitly
+\begin{itemize}
+\item a block is not
+\end{itemize}
+\item multiple \texttt{Proc} objects can be passed to a method
+\begin{itemize}
+\item only one block can be passed to a method
+\end{itemize}
+
+\end{itemize}
+\pause
+
+\begin{lstlisting}[language=ruby]
+def test_blocks(some_proc)
+  puts some_proc.call
+end
+ 
+some_new_proc = Proc.new { puts "in the Proc !" }
+test_blocks(some_new_proc)
+ 
+# Output:
+# in the Proc !
+\end{lstlisting}
+
+\end{frame}
+%http://en.wikipedia.org/wiki/Closure_(computer_programming)
+
+
+\begin{frame}[fragile]\frametitle{Lambdas}
+
+\begin{itemize}
+
+\item a \texttt{lambda} is a \texttt{Proc}
+
+\item a \texttt{lambda} checks the number of parameters passed to it
+\begin{itemize}
+\item a \texttt{Proc} does not
+\end{itemize}
+
+\end{itemize}
+
+\pause
+
+\begin{lstlisting}[language=ruby]
+def test_parameter_handling(code)
+  code.call(1,2)
+end
+ 
+l = lambda {|a,b,c| puts "#{a} is a #{a.class}, #{b} is a #{b.class}, #{c} is a #{c.class}" }
+p = Proc.new {|a,b,c| puts "#{a} is a #{a.class}, #{b} is a #{b.class}, #{c} is a #{c.class}" }
+ 
+test_parameter_handling (p)
+test_parameter_handling (l)
+ 
+# Output:
+# 1 is a Fixnum, 2 is a Fixnum,  is a NilClass
+# ArgumentError: wrong number of arguments (2 for 3)
+\end{lstlisting}
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]\frametitle{Lambdas, cont.}
+
+\begin{itemize}
+
+\item a \texttt{lambda} is a \texttt{Proc}
+
+\item a \texttt{return} keyword inside a \texttt{lambda} returns to the enclosing method
+\begin{itemize}
+\item a \texttt{return} keyword inside \texttt{Proc} returns outside the enclosing method
+\end{itemize}
+
+\end{itemize}
+
+\pause
+
+\begin{columns}[c] 
+
+\begin{column}{5.5cm}
+\lstinputlisting[language=ruby]{code/lambda_method.rb}
+\end{column}
+
+\pause
+
+\begin{column}{5.5cm}
+\lstinputlisting[language=ruby]{code/proc_method.rb}
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+
+
+
+
+\section{Control Flow} 
+\begin{frame}\frametitle{Control Flow} 
+\begin{itemize}
+\item Conditionals
+\item Loops
+\item Iterators
+\item Exceptions
+\end{itemize}
+\end{frame}
+
+
+
+
+\subsection{Conditionals}
+\begin{frame}[fragile]\frametitle{\texttt{if} and \texttt{unless}}
+
+\begin{columns}[c] 
+
+\begin{column}{5.5cm}
+
+\begin{lstlisting}[language=ruby]
+x = 1
+if( x > 1 ) 
+  puts "x > 1"
+elsif x < 1
+  puts "x < 1"
+else
+  puts "x is 1"
+end
+# Output:
+# x is 1
+\end{lstlisting}
+\pause
+\begin{lstlisting}[language=ruby]
+str = ""
+puts "Empty" if str.empty?
+
+# Output:
+# Empty
+\end{lstlisting}
+\pause
+
+\end{column}
+
+\begin{column}{5.5cm}
+\begin{lstlisting}[language=ruby]
+x = 1
+unless x == 1
+  puts "x is not 1"
+else
+  puts "x is 1"
+end
+
+# Output:
+# x is 1
+\end{lstlisting}
+\pause
+\begin{lstlisting}[language=ruby]
+url = nil
+url = "default" unless url
+puts url
+
+# Output:
+# default
+\end{lstlisting}
+
+
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]\frametitle{\texttt{case} and conditional operators}
+
+\begin{columns}[c] 
+
+\begin{column}{5cm}
+
+\begin{lstlisting}[language=ruby]
+age = 5
+case age
+when 0 .. 2
+    puts "baby"
+when 3 .. 6
+    puts "little child"
+when 7 .. 12
+    puts "child"
+when 13 .. 18
+    puts "youth"
+else
+    puts "adult"
+end
+
+# Output:
+# little child
+\end{lstlisting}
+\pause
+\end{column}
+
+\begin{column}{6cm}
+\begin{lstlisting}[language=ruby]
+str = "test"
+if str[1] == 'e' && str.size > 3
+  puts "both true"
+end
+
+# Output:
+# both true
+\end{lstlisting}
+\pause
+\begin{itemize}
+\item \texttt{==}, \texttt{===}, \texttt{!=} or \texttt{<>}, \texttt{!==}, \texttt{>=}, \texttt{<=}, \texttt{>}, \texttt{<}   
+\item \texttt{\&\&} (and), \texttt{||} (or), \texttt{!} (not)
+\item Ternary: a ? b : c
+\end{itemize}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+
+
+\subsection{Loops}
+\begin{frame}[fragile]\frametitle{\texttt{for}, \texttt{while} and \texttt{until}}
+
+\begin{columns}[c] 
+
+\begin{column}{5.3cm}
+\begin{lstlisting}[language=ruby]
+for i in [1, 2] do
+  print i, " "
+end
+
+for s in ["one", "two"] do
+  print s, " "
+end
+
+for i in (1..2) do
+  print i, " "
+end
+
+# Output: 
+# 1 2
+# one two
+# 1 2
+\end{lstlisting}
+\end{column}
+\pause
+\begin{column}{5.4cm}
+\begin{lstlisting}[language=ruby]
+x = 0
+while x < 2
+  x += 1       # not x.succ
+  print x, " "
+end
+
+while x == 2 do puts "x is now 3"; x += 1 end
+
+begin
+  puts "at least once"
+end while x < 0
+
+until x == 3 do puts(x) end
+
+# Output:
+# 1 2 x is now 3
+# at least once
+\end{lstlisting}
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]\frametitle{Iterators}
+
+\begin{columns}[c] 
+
+\begin{column}{8.5cm}
+\begin{lstlisting}[language=ruby]
+[1, 2].each do |i| 
+  print i, " " 
+end
+
+(3..4).each { |i| print i, " " }
+
+5.upto(6) { |i| print i, " " }
+
+2.times { print "7 " }
+
+(8..10).step(2) { |i| print i.to_s + " "  }
+
+11.step(15, 2) { |i| print "#{i} "}
+
+# Output: 
+# 1 2 3 4 5 6 7 7 8 10 11 13 15
+\end{lstlisting}
+\end{column}
+
+
+\end{columns}
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]\frametitle{Iterators, cont.}
+
+\lstinputlisting[language=ruby]{code/iterators.rb}
+
+\end{frame}
+
+
+
+
+\subsection{Exceptions}
+\begin{frame}\frametitle{Exception Handling}
+
+\begin{itemize}
+
+\item predictability
+\begin{itemize}
+\item file existence vs file deleted while reading
+\end{itemize}
+
+\item \texttt{raise} an exception when you identify an external problem:
+\begin{itemize}
+\item the server send invalid data, or
+\item out of disk space
+\end{itemize}
+
+\item ...that the user needs to handle, or
+\begin{itemize}
+\item sometimes the program can handle
+\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]\frametitle{Exception Handling, cont.}
+\lstinputlisting[language=ruby]{code/exceptions_basic.rb}
+\end{frame}
+

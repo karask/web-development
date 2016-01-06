@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>Hello Form</title>
+  </head>
+  <body>
+    <h1>Time now is <%= Time.now %></h1>
+    <form action="/hello" method="post">
+      <label for="name-id">Name:</label>
+      <input id="name-id" name="name" type="text">
+      <br>
+      <label for="age-id">Age:</label>
+      <input id="age-id" name="age" type="text">
+      <br>
+      <input value="Submit" type="submit">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+
+Outline
+-------
+
+Week1
+
+Introduction to EIA, Web Services/Applications and the Ruby language
+
+
+Week2
+
+Introduction to the Ruby language and practical
+
+
+Week3
+
+Sinatra, Rack, Model-View-Controller pattern, Seperations of Concerns, Controllers (Routes), Views, (Erb, Haml), Models (Sequel), Helpers, Templates (Layouts, Partials), Build process (Rake), Managing Dependencies (Bundler)
+
+
+Week4
+
+Web Application structure and organisation, Multiple environments and deployment (rvm, Bundler), Sessions, Logging, Mime types and attachments, Configuration, Error Handling, Filters and practical
+
+
+Week5
+
+Associassions and Migrations (Sequel), HTTP Authentication, OAuth Authentication, Web Services (SOAP, REST), REST API Example
+
+
+Week6
+
+Consolidation Week
+
+
+Week7
+
+Client-side and presentation, HTML/CSS, Javascript, JQuery, AngularJS, Twitter Bootstrap and practical
+
+
+Week8
+
+Test-driven development, Behaviour-driven development, From Waterfall to Agile, RSpec, Cucumber, Stubs and Mocks and Practical
+
+
+Week9
+
+Ruby on Rails, Philosophy, Web Application structure and organisation (revisited), Scaffolding, MVC in RoR
+
+
+Week10
+
+ActiveRecord (Models, Interfaces, Validations, Associations, Callbacks), Testing, Content Negotiation, External Hooks
+
+
+Week11
+
+More Ruby on Rails
+
+
+Week12
+
+Revision Week
+
+
+Blocking I/O, Threading and Parallelism, Scheduling, Load Balancing and Caching, JRuby, Performance and Limitations
+Internationalization
+Parsing XML for Legacy Services (XML/SOAP), Message Queues, Gem libraries, 

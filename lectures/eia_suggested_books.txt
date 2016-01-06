@@ -1,0 +1,3 @@
+Programming Ruby (2nd edition): The Pragmatic Programmers' Guide
+by Dave Thomas, with Chad Fowler and Andy Hunt
+

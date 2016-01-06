@@ -1,0 +1,466 @@
+  
+\documentclass{beamer}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{hyperref}
+
+\lstset{
+		tabsize=4,
+        basicstyle=\scriptsize,
+        %captionpos=b,
+        %upquote=true,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=true,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=tRBl,
+	    %frameround=tttf,
+	    numbers=left,
+	    numberstyle=\tiny,
+	    numbersep=5pt,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.133,0.545,0.133},
+        stringstyle=\color[rgb]{0.627,0.126,0.941},
+        aboveskip=5pt
+}
+
+\usetheme{AnnArbor}
+\usecolortheme{beaver}
+\setbeamertemplate{note page}[plain]
+\begin{document}
+
+\title{Introduction to Web Development}
+\subtitle{using Sinatra}
+\author[Konstantinos Karasavvas]{Konstantinos Karasavvas} %\\{\small Software Architect and Engineer}}
+
+\institute{CITY College}
+\date{\today} 
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+\setcounter{tocdepth}{2}
+\frametitle{Table of contents}
+\tableofcontents
+\end{frame} 
+
+
+
+
+
+\section{Even More Sinatra}
+
+\subsection{Migrations} 
+\begin{frame}\frametitle{Migrations} 
+
+  \begin{itemize}
+    \item A database schema continuously evolves
+    \item Synchronising with other devs or dev machines becomes important
+    \item Typically, changes are captured with an SQL script
+    \item Migrations provide:
+    \begin{itemize}
+      \item a Ruby DSL to describe modifications
+      \item a framework to run multiple migrations to upgrade to downgrade your database
+    \end{itemize}
+    
+    \item Example: Tiny Blog
+    \begin{itemize}
+      \item two tables: \texttt{authors} and \texttt{posts}
+      \item a one to many relationship
+    \end{itemize}
+    
+    \item The first migration will create the database
+    \begin{itemize}
+      \item existing databases could be automatically converted to a migration
+    \end{itemize}
+    
+  \end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}\frametitle{Migrations: Example} 
+
+  \lstinputlisting[language=ruby]{code/proj2/db/migrations/001_init_db.rb}
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]\frametitle{Migrations: Example, cont} 
+
+  \begin{lstlisting}[language=bash, escapechar={^}]
+$ sequel  -m db/migrations  sqlite://db/tblog.db
+  \end{lstlisting}
+
+  \begin{lstlisting}[language=bash, escapechar={^}]
+$ sqlite3 db/tblog.db
+SQLite version 3.7.9 2011-11-01 00:52:41
+Enter ".help" for instructions
+Enter SQL statements terminated with a ";"
+sqlite> .tables
+authors      posts        schema_info
+sqlite> .schema authors
+CREATE TABLE `authors`(`id` integer DEFAULT (NULL) NOT NULL PRIMARY KEY, `name` varchar(255) DEFAULT (NULL) NULL);
+sqlite> 
+  \end{lstlisting}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]\frametitle{Migrations: Example, cont} 
+
+  \lstinputlisting[language=ruby]{code/proj2/db/migrations/002_add_author_age.rb}
+
+  \begin{lstlisting}[language=bash, escapechar={^}]
+$ sequel  -E  -m db/migrations  sqlite://db/tblog.db
+...
+  \end{lstlisting}
+  
+\end{frame}
+
+
+
+
+
+\begin{frame}[fragile]\frametitle{Migrations: \texttt{sequel -E ...}} 
+
+  \begin{lstlisting}[language=bash, basicstyle=\tiny, escapechar={^}]
+I, [2013-08-03T12:24:13.163269 #6904]  INFO -- : (0.000425s) PRAGMA foreign_keys = 1
+I, [2013-08-03T12:24:13.163771 #6904]  INFO -- : (0.000077s) PRAGMA case_sensitive_like = 1
+I, [2013-08-03T12:24:13.169883 #6904]  INFO -- : (0.000316s) SELECT NULL FROM `schema_info` LIMIT 1
+I, [2013-08-03T12:24:13.170723 #6904]  INFO -- : (0.000303s) SELECT * FROM `schema_info` LIMIT 1
+I, [2013-08-03T12:24:13.171488 #6904]  INFO -- : (0.000231s) SELECT 1 AS 'one' FROM `schema_info` LIMIT 1
+I, [2013-08-03T12:24:13.172428 #6904]  INFO -- : (0.000255s) SELECT COUNT(*) AS 'count' FROM `schema_info` LIMIT 1
+I, [2013-08-03T12:24:13.173217 #6904]  INFO -- : (0.000240s) SELECT `version` FROM `schema_info` LIMIT 1
+I, [2013-08-03T12:24:13.174023 #6904]  INFO -- : Begin applying migration version 2, direction: up
+I, [2013-08-03T12:24:13.187388 #6904]  INFO -- : (0.000211s) SELECT sqlite_version() LIMIT 1
+I, [2013-08-03T12:24:13.187812 #6904]  INFO -- : (0.000112s) PRAGMA foreign_keys
+I, [2013-08-03T12:24:13.188009 #6904]  INFO -- : (0.000059s) PRAGMA foreign_keys = off
+I, [2013-08-03T12:24:13.188230 #6904]  INFO -- : (0.000057s) BEGIN
+I, [2013-08-03T12:24:13.189121 #6904]  INFO -- : (0.000602s) ALTER TABLE `authors` ADD COLUMN `age` integer
+I, [2013-08-03T12:24:13.320536 #6904]  INFO -- : (0.131190s) COMMIT
+I, [2013-08-03T12:24:13.320836 #6904]  INFO -- : (0.000080s) PRAGMA foreign_keys = on
+I, [2013-08-03T12:24:13.454859 #6904]  INFO -- : (0.133744s) UPDATE `schema_info` SET `version` = 2
+I, [2013-08-03T12:24:13.464961 #6904]  INFO -- : Finished applying migration version 2, direction: up, took 0.290906 seconds
+  \end{lstlisting}
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]\frametitle{Migrations: Example, cont} 
+
+  \begin{lstlisting}[language=bash, escapechar={^}]
+$ sqlite3 db/tblog.db
+SQLite version 3.7.9 2011-11-01 00:52:41
+Enter ".help" for instructions
+Enter SQL statements terminated with a ";"
+sqlite> .tables
+authors      posts        schema_info
+sqlite> .schema authors
+CREATE TABLE `authors`(`id` integer DEFAULT (NULL) NOT NULL PRIMARY KEY, `name` varchar(255) DEFAULT (NULL) NULL, `age` integer);
+sqlite> 
+  \end{lstlisting}
+
+  \begin{lstlisting}[language=bash, escapechar={^}]
+$ sequel  -m db/migrations  -M 1  sqlite://db/tblog.db
+  \end{lstlisting}
+
+  \begin{lstlisting}[language=bash, escapechar={^}]
+$ sequel  -m db/migrations  -M 0  sqlite://db/tblog.db
+  \end{lstlisting}
+  
+\end{frame}
+
+
+
+\subsection{Associations} 
+\begin{frame}\frametitle{Associations} 
+  \begin{itemize}
+    \item Relationships between tables (models) are called associations 
+    \begin{itemize}
+      \item Example: Tiny Blog
+      \item Authors has a one to many relationship with posts
+    \end{itemize}
+    
+    \item Sequel provides an easy way to declare
+    \begin{itemize}
+      \item one to many
+      \item many to one
+      \item many to many
+    \end{itemize}
+    
+  \end{itemize}
+      
+\end{frame}
+
+
+
+\begin{frame}[fragile]\frametitle{Sequel Associations: Example} 
+  
+  \lstinputlisting[language=ruby]{code/proj2/models/authors.rb}
+  
+  \lstinputlisting[language=ruby]{code/proj2/models/posts.rb}
+    
+  \begin{itemize}
+
+    \item \texttt{many\_to\_many} is as simple as the above example
+    \begin{itemize}
+      \item ... but assumes a correct schema (i.e. three tables)
+    \end{itemize}
+
+  \end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]\frametitle{Sequel Associations: Example 2} 
+
+  \begin{itemize}
+
+    \item An author can write many books
+    \item A book can have many authors
+    \item Sequel models will simply be:
+
+  \end{itemize}  
+  
+  \lstinputlisting[language=ruby]{code/authors.rb}
+  
+  \lstinputlisting[language=ruby]{code/books.rb}
+    
+\end{frame}
+
+
+
+\begin{frame}[fragile]\frametitle{Sequel Associations: Example 2, cont.} 
+
+  \begin{center}
+    \includegraphics[scale=0.5]{diagrams/authors_books_tables.pdf}  
+  \end{center}
+      
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]\frametitle{Sequel Associations: Example 2, cont.} 
+
+  \begin{lstlisting}[language=ruby, escapechar={^}]
+books = [
+          Book.create(:title => "Ruby"),
+          Book.create(:title => "Sinatra")
+        ]
+        
+author = Author.create(:name => "Kostas Karasavvas")
+  
+books.each do |b| 
+  author.add_book(b) 
+end
+  
+author.save
+  \end{lstlisting}
+
+\end{frame}
+
+
+
+\subsection{Basic Authentication} 
+\begin{frame}\frametitle{Basic Authentication} 
+
+  \begin{itemize}
+    \item HTTP Basic Authentication
+    \begin{itemize}
+      \item simplest authentication possible
+      \item no cookies, sessions, logins
+    \end{itemize}
+
+    \item Uses standard HTTP headers
+    \item No confidentiality (encryption) of credentials
+    \begin{itemize}
+      \item encoded with BASE64
+      \item no cookies, sessions, logins
+    \end{itemize}
+
+    \item Credentials are cached by the browser to avoid constant prompting
+    
+    \item Server-side
+    \begin{itemize}
+      \item HTTP 401 Not Authorized
+      \item \texttt{WWW-Authenticate: Basic realm="insert realm"}
+    \end{itemize}
+
+    \item Client-side
+    \begin{itemize}
+      \item concatenate "username:password"
+      \item \texttt{Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==}
+    \end{itemize}
+
+    \item \texttt{http://username:password@www.example.com/path}
+
+  \end{itemize}
+  
+\end{frame}
+
+
+
+\begin{frame}[fragile]\frametitle{Basic Authentication: Example 1} 
+
+  \lstinputlisting[language=ruby]{code/basic_auth.rb}
+    
+\end{frame}
+
+
+\begin{frame}[fragile]\frametitle{Basic Authentication: Example 1, cont.} 
+
+  \lstinputlisting[language=ruby]{code/config.ru}
+    
+  \begin{itemize}
+    \item '/'
+    \item '/admin'
+    \item '/admin/another'
+  \end{itemize}
+  
+\end{frame}
+
+
+
+\begin{frame}[fragile]\frametitle{Basic Authentication: Example 2} 
+
+  \lstinputlisting[language=ruby, lastline=20]{code/basic_auth2.rb}
+    
+\end{frame}
+
+
+\begin{frame}[fragile]\frametitle{Basic Authentication: Example 2, cont.} 
+
+  \lstinputlisting[language=ruby, firstline=23]{code/basic_auth2.rb}
+  
+  \lstinputlisting[language=ruby]{code/config2.ru}
+    
+\end{frame}
+
+
+
+
+\subsection{OAuth} 
+\begin{frame}\frametitle{OAuth} 
+
+  \begin{itemize}
+    \item Open standard for authentication
+    \begin{itemize}
+      \item allows clients to access server resources using another service's credentials
+      \item e.g. login to the app using twitter credentials
+      \item Facebook, Google, GitHub, FourSquare, Dropbox, ...
+    \end{itemize}
+ 
+    \item OmniAuth: multiple-provider authentication library
+    \begin{itemize}
+      \item implemented as Rack middleware
+      \item provides OAuth for several providers, called \textit{Strategies}
+    \end{itemize}
+    
+    \item OAuth requires registration of the web app with the respective provider
+    \begin{itemize}
+      \item a static web app address is needed
+      \item the provider will then give you a \textbf{key} and a \textbf{password} 
+    \end{itemize}
+
+  \end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}\frametitle{OmniAuth: Example (libs/config)} 
+
+  \lstinputlisting[language=ruby]{code/proj3/Gemfile}
+
+  \lstinputlisting[language=ruby]{code/proj3/config.ru}
+  
+\end{frame}
+
+
+
+\begin{frame}\frametitle{OmniAuth: Example (app)} 
+
+  \lstinputlisting[language=ruby, lastline=11]{code/proj3/oauth.rb}
+  
+\end{frame}
+
+
+
+\begin{frame}\frametitle{OmniAuth: Example (app), cont.} 
+
+  \lstinputlisting[language=ruby, firstline=13]{code/proj3/oauth.rb}
+  
+\end{frame}
+
+
+
+
+\begin{frame}\frametitle{OmniAuth: Example (views)} 
+
+  \lstinputlisting[language=ruby]{code/proj3/views/layout.haml}
+
+  \lstinputlisting[language=ruby]{code/proj3/views/welcome.haml}
+    
+\end{frame}
+
+
+
+\begin{frame}\frametitle{OmniAuth: Example (screenshots)} 
+
+  \begin{center}
+    \includegraphics[scale=0.5]{images/oauth1.png}  
+  \end{center}
+    
+\end{frame}
+
+      
+
+\begin{frame}\frametitle{OmniAuth: Example (screenshots, cont.)} 
+
+  \begin{itemize}
+    \item \texttt{http://localhost:9292/auth/developer}
+  \end{itemize}
+  
+  \begin{center}
+    \includegraphics[scale=0.5]{images/oauth2.png}  
+  \end{center}
+    
+\end{frame}
+
+
+
+
+\begin{frame}\frametitle{OmniAuth: Example (screenshots, cont.)} 
+
+  \begin{center}
+    \includegraphics[scale=0.5]{images/oauth3.png}  
+  \end{center}
+    
+\end{frame}
+
+
+
+
+\end{document}

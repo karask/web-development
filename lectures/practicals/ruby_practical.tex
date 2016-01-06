@@ -1,0 +1,59 @@
+\documentclass[14pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{url}
+\author{Konstantinos Karasavvas}
+\title{Ruby Practical}
+
+\begin{document}
+\maketitle
+
+\section{Basic Exercises}
+\begin{enumerate}
+  \item Load Ubuntu 12.04 image into VirtualBox and start it (unless you have a Linux distribution already installed or you intend to work in Windows or Mac)
+  \begin{itemize}
+    %\item Image can be found in \texttt{c:\textbackslash VB\_app}
+    \item Password for Ubuntu is: eia-2013
+  \end{itemize}
+  \item Check system's Ruby version
+  \item Run interactive ruby and try some commands
+  \item Install Ruby Version Manager (RVM) and install ruby 2
+  \begin{itemize}
+    \item \texttt{\$ rvm list known}
+  \end{itemize}  
+  \item Make a new directory, ``pdf\_generator'' that will represent your project
+  \item Create an RVM configuration (Ruby version and gem set) only for that project
+  \item Create a simple program that accepts a single text file as an argument and generates a pdf file from it
+  \begin{itemize}
+    \item \texttt{\$ to\_pdf.rb text\_file.txt}
+    \item Check \texttt{www.ruby-toolbox.com}
+  \end{itemize}  
+  \item Make a project to generate QR codes out of a URL
+  \begin{itemize}
+    \item Check \texttt{http://en.wikipedia.org/wiki/QR\_code}
+  \end{itemize}  
+
+  \item Create a project with two classes to capture books and authors and the relationships between them
+  \begin{itemize}
+    \item write a driver program to test them
+    \item initially one to many relationship only
+    \item use proper variable initialization with meaningful default values
+  \end{itemize}  
+
+  \item Create a project simulate basic file and directory commands
+  \begin{itemize}
+    \item \texttt{\$ basic\_shell.rb <cmd> <param1> <param2> ...}
+    \item \texttt{optparse} library
+    \item see eval, method\_missing, metaprogramming for more advanced implementation
+  \end{itemize}  
+    
+\end{enumerate}
+
+
+
+%\section{More Exercises}
+%\begin{enumerate}
+%  \item Implement a \texttt{Stack} class that will provide LIFO access and create a driver program to test it
+%\end{enumerate}
+
+
+\end{document}

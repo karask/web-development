@@ -1,0 +1,8 @@
+%form{:action => "/hello", :method => "post"}
+  %label{:for => "name-id"} Name: 
+  %input#name-id{:type => "text", :name => "name"}
+  %br
+  %label{:for => "age-id"} Age: 
+  %input#age-id{:type => "text", :name => "age"}
+  %br
+  %input{:type => "submit", :value => "Submit"}

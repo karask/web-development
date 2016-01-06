@@ -1,0 +1,27 @@
+task :default => [:start]
+
+desc 'Starts app'
+task :start do
+  # exec replaces current process with command
+  exec "bundle exec rackup config.ru"
+end
+
+# database tasks
+task :db => ["db:clean", "db:init"] do
+  puts "Cleaned and initialised db schema"
+end
+
+namespace :db do
+
+  desc 'Deletes the database'
+  task :clean do
+    File.delete('db/users.db') if File.exists?('db/users.db')
+  end
+
+  desc 'Creates the database schema: db is ready to be populated'
+  task :init do
+    touch 'db/users.db' unless File.exist?('db/users.db')
+    ruby "scripts/init_db.rb"
+  end
+
+end

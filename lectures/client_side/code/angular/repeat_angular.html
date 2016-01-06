@@ -1,0 +1,13 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="controllers/names.js"></script>
+  </head>
+  <body ng-controller="NamesController">
+    <div ng-repeat="name in names">
+      <span>{{name.first}}<span>
+      <span>{{name.last | uppercase}}<span>
+    </div>
+  </body>
+</html>

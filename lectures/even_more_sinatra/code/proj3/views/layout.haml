@@ -1,0 +1,17 @@
+!!! 5
+%html
+  %head
+    %title OmniAuth Example
+  %body
+    %h1 OmniAuth Example
+    -unless session['username']
+      %ul
+        -if settings.environment == :development
+          %li
+            %a(href="auth/developer") Login with Developer
+        %li
+          %a(href="auth/twitter") Login with Twitter
+    -else
+      %p You are logged in as #{session['username']}
+
+  =yield     # main content

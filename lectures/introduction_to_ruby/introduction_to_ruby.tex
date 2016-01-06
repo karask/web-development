@@ -1,0 +1,59 @@
+
+\documentclass{beamer}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+
+\lstset{
+		tabsize=4,
+        basicstyle=\scriptsize,
+        %upquote=true,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=true,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+		frame=tRBl,
+		%frameround=tttf,
+		numbers=left,
+		numberstyle=\tiny,
+		numbersep=5pt,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.133,0.545,0.133},
+        stringstyle=\color[rgb]{0.627,0.126,0.941},
+        aboveskip=5pt
+}
+
+\usetheme{AnnArbor}
+\usecolortheme{beaver}
+\setbeamertemplate{note page}[plain]
+\begin{document}
+
+\title{Introduction to Ruby}
+\author{Konstantinos Karasavvas}
+\institute{CITY College}
+\date{\today} 
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+\setcounter{tocdepth}{1}
+\frametitle{Table of contents}
+\tableofcontents
+\end{frame} 
+
+
+\input{itr_part1.tex}
+
+\input{itr_part2.tex}
+
+
+
+\end{document}
